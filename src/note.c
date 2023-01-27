@@ -2,6 +2,8 @@
 #include <stdio.h>  
 #include <string.h>
 
+#define NB_MATIERE 20
+
 typedef char *String ;
 
 typedef struct
@@ -9,13 +11,24 @@ typedef struct
     int ID;
     float note;
 }eleve_typ;
-    
+
+typedef char controle_typ[9];
+
+typedef char nom_typ[20];
+
+typedef struct
+{
+    int ID_etu;
+    float note_etu[NB_MATIERE];
+    controle_typ controle_etu[NB_MATIERE];
+    nom_typ nom_etu[NB_MATIERE];
+}etudiant_typ;
 
 typedef struct
 {
     eleve_typ *eleve;
-    char controle[9];
-    char nom[20];
+    controle_typ controle;
+    nom_typ nom;
 }matiere_typ;
 
 
@@ -54,7 +67,7 @@ matiere_typ lire_fichier (char* chemin_fichier){
     }
 
 
-    for(int cot=0;strcmp(mot_lu,"22212673")!=0;fscanf(fichier,"%s",&mot_lu))
+    for(int cot=0;strcmp(mot_lu,"22212673")!=0;fscanf(fichier,"%s",mot_lu))
     {
 
         if(strncmp(mot_lu,"ELU",3)==0)
@@ -64,11 +77,8 @@ matiere_typ lire_fichier (char* chemin_fichier){
         else if(strncmp(mot_lu,"CC",2)==0)
         {
 
-        //fflush(stdout);
          strcpy(matiere.controle,mot_lu);
          }    
-        // printf("mot : %s\n",mot_lu);
-        // fflush(stdout);
 
     }
 
@@ -82,9 +92,7 @@ matiere_typ lire_fichier (char* chemin_fichier){
     matiere.eleve[nb_eleve].note=atof(note_lu);
 
 
-printf("\nlecture fichier\n");
-
-    for(nb_eleve=1;strcmp(ID_lu,"MOYENNE")!=0;fscanf(fichier,"%s",&ID_lu))
+    for(nb_eleve=1;strcmp(ID_lu,"MOYENNE")!=0;fscanf(fichier,"%s",ID_lu))
     
     {
         if(strlen(ID_lu)==8)
@@ -99,7 +107,7 @@ printf("\nlecture fichier\n");
 
         if(strcmp(note_lu,"Validé")==0  || strcmp(note_lu,"DISPENSE")==0 )
         {
-            fscanf(fichier,"%*s",note_lu);
+            fscanf(fichier,"%*s");
             matiere.eleve[nb_eleve].note=-1;
         }
 
@@ -108,8 +116,6 @@ printf("\nlecture fichier\n");
     }
 
     fclose(fichier);//fermeture du fichier
-
- printf("\n");
 
 
 
@@ -131,11 +137,13 @@ char commande[500];
 
 void lire_tout_fichier()
 {
+etudiant_typ etudiant[40];
 
 recup_chemin();
 char chemin_fichier[100]="fic_temp";
 char chemin_complet[100]="";
 matiere_typ matiere;
+int nb_matiere=0;
     FILE* fichier = NULL;//pointeur de fichier pour utiliser les fonction associé
 
 
@@ -150,20 +158,39 @@ matiere_typ matiere;
     {
         strcpy(chemin_complet,"../semstre_5/");
         strcat(chemin_complet,chemin_fichier);
-        printf("nom fichier : %s",chemin_complet);
+        //printf("nom fichier : %s",chemin_complet);
         matiere=lire_fichier(chemin_complet);
-
         printf("nom : %s, controle : %s\n",matiere.nom,matiere.controle);
+
         for(int i=0;i<40;i++)
         {
-        printf("%d %f\n", matiere.eleve[i].ID, matiere.eleve[i].note);
+        etudiant[i].ID_etu=matiere.eleve[i].ID;
+        etudiant[i].note_etu[nb_matiere]=matiere.eleve[i].note;
+        strcpy(etudiant[i].nom_etu[nb_matiere],matiere.nom);
+        strcpy(etudiant[i].controle_etu[nb_matiere],matiere.controle);
+
+        //printf("%d %f\n", matiere.eleve[i].ID, matiere.eleve[i].note);
         }
+
+        printf("%d %f\n", matiere.eleve[0].ID, matiere.eleve[0].note);
+
         free(matiere.eleve);
 
+        printf("\n");
+        nb_matiere++;
+
     } while (fscanf(fichier,"%*s %*s %*s %*s %*s %*s %*s %*s %s",chemin_fichier)!=EOF);
-    
+
+printf("youss : \nID : %d \n",etudiant[0].ID_etu);
+
+        for(int i=0;i<nb_matiere;i++)
+        {
+            printf("matiere : %s \n controle : %s\n note : %f\n ",etudiant[0].nom_etu[nb_matiere],etudiant[0].controle_etu[nb_matiere],etudiant[0].note_etu[nb_matiere]);
+        }
 
 
+
+fclose(fichier);
 }
 
 
@@ -185,6 +212,7 @@ matiere_typ matiere;
 void main (){
 
     lire_tout_fichier();
+
 /*
 recup_chemin();
 
