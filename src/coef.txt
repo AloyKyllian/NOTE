@@ -2,11 +2,11 @@ ELUMC5A2 EPS 11
 ELUMC5A3 SHS 23
 ELUMC5A1 langues 33
 ELUMC5A4 EGE 33
-ELUMC5B1 informatique 33 CC1 25 CC2 25 TP_NOTE 25 PFR 25
+ELUMC5B1 informatique 33
 ELUMC5B2 mathematique 11
 ELUMC5B3 physique 33
 ELURO5B2 outil_math 23
 ELURO5C1 Modelisation_et_commande_de_systemes 25
-ELURO5C2 sURETE_DE_FONCTIONNEMENT 25
+ELURO5C2 Surete_de_fonctionnement 25
 ELURO5C3 Outil_de_modelisation_informatique 25
 ELURO5C4 Programmation_orientee_objet 25

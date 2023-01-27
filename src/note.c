@@ -60,7 +60,6 @@ matiere_typ lire_fichier (char* chemin_fichier){
     char note_lu[100]="";
     int nb_eleve=0;
 
-
     fichier = fopen(chemin_fichier, "r");//ouvre le fichier ne mode read
     if(fichier==NULL){    
         printf("erreur ouverture pdf");
@@ -137,18 +136,17 @@ char commande[500];
 
 void lire_tout_fichier()
 {
-etudiant_typ etudiant[40];
-
-recup_chemin();
-char chemin_fichier[100]="fic_temp";
-char chemin_complet[100]="";
-matiere_typ matiere;
-int nb_matiere=0;
+    etudiant_typ etudiant[40];
+    recup_chemin();
+    char chemin_fichier[100]="fic_temp";
+    char chemin_complet[100]="";
+    matiere_typ matiere;
+    int nb_matiere=0;
     FILE* fichier = NULL;//pointeur de fichier pour utiliser les fonction associé
 
 
     fichier = fopen("fic_temp", "r");//ouvre le fichier ne mode read
-    if(fichier==NULL){    
+    if(fichier==NULL){
         printf("erreur ouverture pdf");
     }
 
@@ -158,145 +156,34 @@ int nb_matiere=0;
     {
         strcpy(chemin_complet,"../semstre_5/");
         strcat(chemin_complet,chemin_fichier);
-        //printf("nom fichier : %s",chemin_complet);
         matiere=lire_fichier(chemin_complet);
-        printf("nom : %s, controle : %s\n",matiere.nom,matiere.controle);
 
         for(int i=0;i<40;i++)
         {
-        etudiant[i].ID_etu=matiere.eleve[i].ID;
-        etudiant[i].note_etu[nb_matiere]=matiere.eleve[i].note;
-        strcpy(etudiant[i].nom_etu[nb_matiere],matiere.nom);
-        strcpy(etudiant[i].controle_etu[nb_matiere],matiere.controle);
-
-        //printf("%d %f\n", matiere.eleve[i].ID, matiere.eleve[i].note);
+            etudiant[i].ID_etu=matiere.eleve[i].ID;
+            etudiant[i].note_etu[nb_matiere]=matiere.eleve[i].note;
+            strcpy(etudiant[i].nom_etu[nb_matiere],matiere.nom);
+            strcpy(etudiant[i].controle_etu[nb_matiere],matiere.controle);
         }
-
-        printf("%d %f\n", matiere.eleve[0].ID, matiere.eleve[0].note);
-
-        free(matiere.eleve);
-
-        printf("\n");
         nb_matiere++;
-
     } while (fscanf(fichier,"%*s %*s %*s %*s %*s %*s %*s %*s %s",chemin_fichier)!=EOF);
 
-printf("youss : \nID : %d \n",etudiant[0].ID_etu);
+    printf("youss : \nID : %d \n",etudiant[2].ID_etu);
 
-        for(int i=0;i<nb_matiere;i++)
-        {
-            printf("matiere : %s \n controle : %s\n note : %f\n ",etudiant[0].nom_etu[nb_matiere],etudiant[0].controle_etu[nb_matiere],etudiant[0].note_etu[nb_matiere]);
-        }
+    for(int i=0;i<nb_matiere;i++)
+    {
+        printf("matiere : %s   controle : %s\nnote : %f\n",etudiant[2].nom_etu[i],etudiant[2].controle_etu[i],etudiant[2].note_etu[i]);
+    }
 
+    fclose(fichier);
 
-
-fclose(fichier);
+    free(matiere.eleve);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
 void main (){
 
     lire_tout_fichier();
-
-/*
-recup_chemin();
-
-matiere_typ matiere;
-matiere=lire_fichier("../semstre_5/1A_SRI_2022_23__NOTES_ELUMC5A2_EPS_Etudiants.txt");
-printf("nom : %s, controle : %s\n",matiere.nom,matiere.controle);
-for(int i=0;i<40;i++)
-{
- printf("%d %f\n", matiere.eleve[i].ID, matiere.eleve[i].note);
-}
-free(matiere.eleve);
-matiere=lire_fichier("../semstre_5/1A_SRI_2022_23__NOTES_ELUMC5A3_SHS_CC1_E.BABOURAM_Etudiants.txt");
-printf("nom : %s, controle : %s\n",matiere.nom,matiere.controle);
-for(int i=0;i<40;i++)
-{
- printf("%d %f\n", matiere.eleve[i].ID, matiere.eleve[i].note);
-}
-free(matiere.eleve);
-matiere=lire_fichier("../semstre_5/1A_SRI_2022_23__NOTES_ELURO5C3_OMI_GRAPHES_CC1_F.BANNAY_M.-C.LAGASQUIE_V1_Etudiants_.txt");
-printf("nom : %s, controle : %s\n",matiere.nom,matiere.controle);
-for(int i=0;i<40;i++)
-{
- printf("%d %f\n", matiere.eleve[i].ID, matiere.eleve[i].note);
-}
-free(matiere.eleve);
-matiere=lire_fichier("../semstre_5/1A_SRI_2022_23__NOTES_ELURO5C3_OMI_GRAPHES_CC2_F.BANNAY_M.-C.LAGASQUIE_V1_Etudiants_.txt");
-printf("nom : %s, controle : %s\n",matiere.nom,matiere.controle);
-for(int i=0;i<40;i++)
-{
- printf("%d %f\n", matiere.eleve[i].ID, matiere.eleve[i].note);
-}
-free(matiere.eleve);
-matiere=lire_fichier("../semstre_5/1A_SRI_2022_23__NOTES_ELURO5C3_OMI_UML_CC1_C.CHAUDET_V1_Etudiants.txt");
-printf("nom : %s, controle : %s\n",matiere.nom,matiere.controle);
-for(int i=0;i<40;i++)
-{
- printf("%d %f\n", matiere.eleve[i].ID, matiere.eleve[i].note);
-}
-free(matiere.eleve);
-matiere=lire_fichier("../semstre_5/1A_SRI_2022_23__NOTES_ELURO5C4_PROG._ORIENTEE_OBJET_CC1_M.-C.LAGASQUIE_Etudiants.txt");
-printf("nom : %s, controle : %s\n",matiere.nom,matiere.controle);
-for(int i=0;i<40;i++)
-{
- printf("%d %f\n", matiere.eleve[i].ID, matiere.eleve[i].note);
-}
-free(matiere.eleve);
-
-
-
-matiere=lire_fichier("../semstre_5/1A_SRI_2022_23__NOTES_ELURO5C4_PROG._ORIENTEE_OBJET_CC1_M.-C.LAGASQUIE_Etudiants.txt");
-printf("nom : %s, controle : %s\n",matiere.nom,matiere.controle);
-for(int i=0;i<40;i++)
-{
- printf("%d %f\n", matiere.eleve[i].ID, matiere.eleve[i].note);
-}
-free(matiere.eleve);
-matiere=lire_fichier("../semstre_5/1A_SRI_2022_23__NOTES_ELURO5C4_PROG._ORIENTEE_OBJET_CC1_M.-C.LAGASQUIE_Etudiants.txt");
-printf("nom : %s, controle : %s\n",matiere.nom,matiere.controle);
-for(int i=0;i<40;i++)
-{
- printf("%d %f\n", matiere.eleve[i].ID, matiere.eleve[i].note);
-}
-free(matiere.eleve);
-matiere=lire_fichier("../semstre_5/1A_SRI_2022_23__NOTES_ELURO5C4_PROG._ORIENTEE_OBJET_CC1_M.-C.LAGASQUIE_Etudiants.txt");
-printf("nom : %s, controle : %s\n",matiere.nom,matiere.controle);
-for(int i=0;i<40;i++)
-{
- printf("%d %f\n", matiere.eleve[i].ID, matiere.eleve[i].note);
-}
-free(matiere.eleve);
-matiere=lire_fichier("../semstre_5/1A_SRI_2022_23__NOTES_ELURO5C4_PROG._ORIENTEE_OBJET_CC1_M.-C.LAGASQUIE_Etudiants.txt");
-printf("nom : %s, controle : %s\n",matiere.nom,matiere.controle);
-for(int i=0;i<40;i++)
-{
- printf("%d %f\n", matiere.eleve[i].ID, matiere.eleve[i].note);
-}
-free(matiere.eleve);
-matiere=lire_fichier("../semstre_5/1A_SRI_2022_23__NOTES_ELURO5C4_PROG._ORIENTEE_OBJET_CC1_M.-C.LAGASQUIE_Etudiants.txt");
-printf("nom : %s, controle : %s\n",matiere.nom,matiere.controle);
-for(int i=0;i<40;i++)
-{
- printf("%d %f\n", matiere.eleve[i].ID, matiere.eleve[i].note);
-}
-free(matiere.eleve);
-*/
 
 }
