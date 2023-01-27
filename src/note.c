@@ -129,16 +129,42 @@ char commande[500];
 }
 
 
+void lire_tout_fichier()
+{
+
+recup_chemin();
+char chemin_fichier[100]="fic_temp";
+char chemin_complet[100]="";
+matiere_typ matiere;
+    FILE* fichier = NULL;//pointeur de fichier pour utiliser les fonction associé
 
 
+    fichier = fopen("fic_temp", "r");//ouvre le fichier ne mode read
+    if(fichier==NULL){    
+        printf("erreur ouverture pdf");
+    }
+
+    fscanf(fichier,"%*s %*s %*s %*s %*s %*s %*s %*s %s",chemin_fichier);
+
+    do
+    {
+        strcpy(chemin_complet,"../semstre_5/");
+        strcat(chemin_complet,chemin_fichier);
+        printf("nom fichier : %s",chemin_complet);
+        matiere=lire_fichier(chemin_complet);
+
+        printf("nom : %s, controle : %s\n",matiere.nom,matiere.controle);
+        for(int i=0;i<40;i++)
+        {
+        printf("%d %f\n", matiere.eleve[i].ID, matiere.eleve[i].note);
+        }
+        free(matiere.eleve);
+
+    } while (fscanf(fichier,"%*s %*s %*s %*s %*s %*s %*s %*s %s",chemin_fichier)!=EOF);
+    
 
 
-
-
-
-
-
-
+}
 
 
 
@@ -158,6 +184,8 @@ char commande[500];
 
 void main (){
 
+    lire_tout_fichier();
+/*
 recup_chemin();
 
 matiere_typ matiere;
@@ -203,4 +231,44 @@ for(int i=0;i<40;i++)
  printf("%d %f\n", matiere.eleve[i].ID, matiere.eleve[i].note);
 }
 free(matiere.eleve);
+
+
+
+matiere=lire_fichier("../semstre_5/1A_SRI_2022_23__NOTES_ELURO5C4_PROG._ORIENTEE_OBJET_CC1_M.-C.LAGASQUIE_Etudiants.txt");
+printf("nom : %s, controle : %s\n",matiere.nom,matiere.controle);
+for(int i=0;i<40;i++)
+{
+ printf("%d %f\n", matiere.eleve[i].ID, matiere.eleve[i].note);
+}
+free(matiere.eleve);
+matiere=lire_fichier("../semstre_5/1A_SRI_2022_23__NOTES_ELURO5C4_PROG._ORIENTEE_OBJET_CC1_M.-C.LAGASQUIE_Etudiants.txt");
+printf("nom : %s, controle : %s\n",matiere.nom,matiere.controle);
+for(int i=0;i<40;i++)
+{
+ printf("%d %f\n", matiere.eleve[i].ID, matiere.eleve[i].note);
+}
+free(matiere.eleve);
+matiere=lire_fichier("../semstre_5/1A_SRI_2022_23__NOTES_ELURO5C4_PROG._ORIENTEE_OBJET_CC1_M.-C.LAGASQUIE_Etudiants.txt");
+printf("nom : %s, controle : %s\n",matiere.nom,matiere.controle);
+for(int i=0;i<40;i++)
+{
+ printf("%d %f\n", matiere.eleve[i].ID, matiere.eleve[i].note);
+}
+free(matiere.eleve);
+matiere=lire_fichier("../semstre_5/1A_SRI_2022_23__NOTES_ELURO5C4_PROG._ORIENTEE_OBJET_CC1_M.-C.LAGASQUIE_Etudiants.txt");
+printf("nom : %s, controle : %s\n",matiere.nom,matiere.controle);
+for(int i=0;i<40;i++)
+{
+ printf("%d %f\n", matiere.eleve[i].ID, matiere.eleve[i].note);
+}
+free(matiere.eleve);
+matiere=lire_fichier("../semstre_5/1A_SRI_2022_23__NOTES_ELURO5C4_PROG._ORIENTEE_OBJET_CC1_M.-C.LAGASQUIE_Etudiants.txt");
+printf("nom : %s, controle : %s\n",matiere.nom,matiere.controle);
+for(int i=0;i<40;i++)
+{
+ printf("%d %f\n", matiere.eleve[i].ID, matiere.eleve[i].note);
+}
+free(matiere.eleve);
+*/
+
 }
