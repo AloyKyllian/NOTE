@@ -156,12 +156,6 @@ char commande[500];
 
 
 
-
-
-
-
-
-
 void main (){
 
 recup_chemin();
