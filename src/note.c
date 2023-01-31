@@ -73,7 +73,7 @@ matiere_typ lire_fichier (char* chemin_fichier){
         {
         strcpy(matiere.nom,mot_lu);
         }        
-        else if(strncmp(mot_lu,"CC",2)==0)
+        else if(strncmp(mot_lu,"CC",2)==0 || strncmp(mot_lu,"TP",2)==0 || strncmp(mot_lu,"UML",3)==0)
         {
 
          strcpy(matiere.controle,mot_lu);
