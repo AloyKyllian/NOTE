@@ -1,0 +1,17 @@
+ELUMC5A2 
+11
+ELUMC5A3 
+CC 50 
+ORAL 50 
+ELUMC5A1 
+33
+ELUMC5A4 
+33
+ELUMC5B1 informatique 25 CC1 25 TP 20 CT 25 PFR 30 
+ELUMC5B2 mathematique 11
+ELUMC5B3 physique 33 CT1 50 CT2 50
+ELURO5B2 outil_math 23
+ELURO5C1 Modelisation_et_commande_de_systemes 25 TP1 15 CT1 35 TP2 15 CT2 35
+ELURO5C2 Surete_de_fonctionnement 25 CT 100
+ELURO5C3 Outil_de_modelisation_informatique 25 CC1 20 CT1 50 CT2 30
+ELURO5C4 Programmation_orientee_objet 25 TP 30 CT 70
