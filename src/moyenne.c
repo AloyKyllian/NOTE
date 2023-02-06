@@ -4,7 +4,7 @@
 #include "moyenne.h"
 
 
-moyenne_matiere Calcul_Moyenne_matiere(char chemin_dossier_coef[100], etudiant_typ etudiant[40], int numero_etu)
+void Calcul_Moyenne_matiere(char chemin_dossier_coef[100], etudiant_typ etudiant[40], int numero_etu,moyenne_matiere tab_moyenne[])
 {
     FILE *fichier;
     char chaine[100];
@@ -12,11 +12,12 @@ moyenne_matiere Calcul_Moyenne_matiere(char chemin_dossier_coef[100], etudiant_t
     float moyenne = 0;
     char commande[100];
     char nom_fichier[100];
-    moyenne_matiere tab_moyenne[NB_MATIERE];
     int j = 0;
+
     for (int i = 0; i < NB_MATIERE; i++)
     {
         system("touch tmp.txt");
+        system("chmod 777 tmp.txt");
         strcpy(commande, "grep -l ");
         strcat(commande, etudiant[numero_etu].nom_etu[i]);
         strcpy(tab_moyenne[j].elum, etudiant[numero_etu].nom_etu[i]);
@@ -25,7 +26,7 @@ moyenne_matiere Calcul_Moyenne_matiere(char chemin_dossier_coef[100], etudiant_t
         strcat(commande, " > tmp.txt");
         system(commande);
         fichier = fopen("tmp.txt", "r");
-        if (strcmp(etudiant[numero_etu].controle_etu[i], "rien") != NULL)
+        if (strcmp(etudiant[numero_etu].controle_etu[i], "rien") != 0)
         {
             while (fscanf(fichier, "%d", &coef) != EOF)
             {
@@ -46,9 +47,8 @@ moyenne_matiere Calcul_Moyenne_matiere(char chemin_dossier_coef[100], etudiant_t
                
             }tab_moyenne[j].moyenne_elum = moyenne; j++;
         }
-        system("rm tmp.txt");
+        // system("rm tmp.txt");
     }
-
 
 }
 

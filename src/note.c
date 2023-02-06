@@ -104,7 +104,7 @@ char commande[500];
 }
 
 
-void lire_tout_fichier()
+etudiant_typ lire_tout_fichier()
 {
     etudiant_typ etudiant[40];
     recup_chemin();
@@ -138,16 +138,17 @@ void lire_tout_fichier()
         nb_matiere++;
     } while (fscanf(fichier,"%*s %*s %*s %*s %*s %*s %*s %*s %s",chemin_fichier)!=EOF);
 
-    printf("youss : \nID : %d \n",etudiant[2].ID_etu);
+    // printf("youss : \nID : %d \n",etudiant[2].ID_etu);
 
-    for(int i=0;i<nb_matiere;i++)
-    {
-        printf("matiere : %s   controle : %s\nnote : %f\n",etudiant[2].nom_etu[i],etudiant[2].controle_etu[i],etudiant[2].note_etu[i]);
-    }
+    // for(int i=0;i<nb_matiere;i++)
+    // {
+    //     printf("matiere : %s   controle : %s\nnote : %f\n",etudiant[2].nom_etu[i],etudiant[2].controle_etu[i],etudiant[2].note_etu[i]);
+    // }
 
     fclose(fichier);
 
     free(matiere.eleve);
+    return etudiant[2];
 }
 
 

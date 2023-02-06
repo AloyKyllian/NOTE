@@ -35,7 +35,7 @@ typedef struct
 void virgule_vers_point(String note_lu);
 matiere_typ lire_fichier (char* chemin_fichier);
 void recup_chemin();
-void lire_tout_fichier();
+etudiant_typ lire_tout_fichier();
 
 
 
