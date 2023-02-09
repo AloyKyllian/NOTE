@@ -21,9 +21,11 @@ void Calcul_Moyenne_matiere(char chemin_dossier_coef[100], etudiant_typ etudiant
         strcpy(commande, "grep -l ");
         strcat(commande, etudiant[numero_etu].nom_etu[i]);
         strcpy(tab_moyenne[j].elum, etudiant[numero_etu].nom_etu[i]);
-        strcpy(commande, " ");
-        strcat(commande, chemin_dossier_coef);
+        strcat(commande, " ");
+        strcat(commande, "CoefCC.txt");
         strcat(commande, " > tmp.txt");
+        printf("command : %s \n",commande);
+        fflush(stdout);
         system(commande);
         fichier = fopen("tmp.txt", "r");
         if (strcmp(etudiant[numero_etu].controle_etu[i], "rien") != 0)

@@ -1,7 +1,7 @@
 #ifndef note_H_INCLUS    
 #define note_H_INCLUS   
 
-#define NB_MATIERE 20
+#define NB_MATIERE 14
 
 typedef char *String ;
 
