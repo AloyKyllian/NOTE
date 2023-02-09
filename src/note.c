@@ -134,7 +134,7 @@ etudiant_typ lire_tout_fichier()
             }
             if(strlen(controle)==0)
             {
-                strcpy(controle, "CC1");
+                strcpy(controle, "CF");
                 
             }
 
