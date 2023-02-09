@@ -22,7 +22,7 @@ void Calcul_Moyenne_matiere(char chemin_dossier_coef[100], etudiant_typ etudiant
         strcat(commande, etudiant[numero_etu].nom_etu[i]);
         strcpy(tab_moyenne[j].elum, etudiant[numero_etu].nom_etu[i]);
         strcat(commande, " ");
-        strcat(commande, "CoefCC.txt");
+        strcat(commande, chemin_dossier_coef);
         strcat(commande, " > tmp.txt");
         printf("command : %s \n",commande);
         fflush(stdout);

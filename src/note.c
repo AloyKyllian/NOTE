@@ -37,16 +37,7 @@ matiere_typ lire_fichier(char *chemin_fichier)
 
     for (int cot = 0; strcmp(mot_lu, "22212673") != 0; fscanf(fichier, "%s", mot_lu))
     {
-
-        if (strncmp(mot_lu, "ELU", 3) == 0)
-        {
-            strcpy(matiere.nom, mot_lu);
-        }
-        else if (strncmp(mot_lu, "CC", 2) == 0 || strncmp(mot_lu, "TP", 2) == 0 || strncmp(mot_lu, "UML", 3) == 0)
-        {
-
-            strcpy(matiere.controle, mot_lu);
-        }
+        
     }
 
     fscanf(fichier, "%s", note_lu);
