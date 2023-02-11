@@ -27,6 +27,7 @@ int main()
     // Calcul des moyennes
     printf("teste avant calcul moyenne\n");
     Calcul_Moyenne_matiere(chemin_dossier_coef, etudiant, 2, tab_moyenne);
+    
     resultat = calcul_moyenne(tab_moyenne);
     printf("moyenne generale%f\nmoyenne UE1 %f\nmoyenne UE2 %f\nmoyenne UE3 %f\n", resultat.General, resultat.UE1, resultat.UE2, resultat.UE3);
     

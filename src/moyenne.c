@@ -3,8 +3,7 @@
 #include <string.h>
 #include "moyenne.h"
 
-
-void Calcul_Moyenne_matiere(char chemin_dossier_coef[100], etudiant_typ etudiant[40], int numero_etu,moyenne_matiere tab_moyenne[])
+void Calcul_Moyenne_matiere(char chemin_dossier_coef[100], etudiant_typ etudiant[40], int numero_etu, moyenne_matiere tab_moyenne[])
 {
     FILE *fichier;
     char chaine[100];
@@ -23,56 +22,84 @@ void Calcul_Moyenne_matiere(char chemin_dossier_coef[100], etudiant_typ etudiant
         strcpy(tab_moyenne[j].elum, etudiant[numero_etu].nom_etu[i]);
         strcat(commande, " ");
         strcat(commande, chemin_dossier_coef);
+        strcat(commande, "/*.txt");
         strcat(commande, " > tmp.txt");
-        printf("command : %s \n",commande);
+        //printf("command : %s \n", commande);
         fflush(stdout);
         system(commande);
         fichier = fopen("tmp.txt", "r");
-        if (strcmp(etudiant[numero_etu].controle_etu[i], "rien") != 0)
+        while (fscanf(fichier, "%s", chaine) != EOF)
         {
-            while (fscanf(fichier, "%d", &coef) != EOF)
+            strcpy(nom_fichier, chaine);
+            //printf("\nchaine = %s et nom fichier = %s\n", chaine, nom_fichier);
+        }
+        fclose(fichier);
+        fichier = fopen(nom_fichier, "r");
+        //printf("\netudiant[numero_etu].controle_etu[i]=%s\n", etudiant[numero_etu].controle_etu[i]);
+
+        if (strcmp(etudiant[numero_etu].controle_etu[i], "CF") == 0 || strcmp(etudiant[numero_etu].controle_etu[i], "UML") == 0)
+        {
+            //printf("\n dans le if de CF ET UML : etudiant[numero_etu].controle_etu[i]=%s\n", etudiant[numero_etu].controle_etu[i]);
+
+            while (fscanf(fichier, "%s", chaine) != EOF)
             {
-                moyenne = etudiant[numero_etu].note_etu[i] * coef;
-                tab_moyenne[j].moyenne_elum = moyenne;
-                j++;
+                if (strcmp(chaine, "CF") == 0 || strcmp(chaine, "UML") == 0)
+                {
+                    fscanf(fichier, "%d", &coef) != EOF;
+                    printf("etudiant[numero_etu].controle_etu[i] = %s , coef = %d\n", etudiant[numero_etu].controle_etu[i], coef);
+                    moyenne = etudiant[numero_etu].note_etu[i] * coef;
+                    tab_moyenne[j].moyenne_elum = moyenne;
+                    j++;
+                }
+                
+
             }
         }
 
         else
         {
-            while (fscanf(fichier, "%c", chaine) != EOF)
-            {   
-                if(strcmp(etudiant[numero_etu].controle_etu[i],chaine)){
+            while (fscanf(fichier, "%s", chaine) != EOF)
+            {
+                if (strcmp(etudiant[numero_etu].controle_etu[i], chaine))
+                {
                     fscanf(fichier, "%d", &coef);
-                    moyenne = moyenne+etudiant[numero_etu].note_etu[i] * coef;
+                    moyenne = moyenne + etudiant[numero_etu].note_etu[i] * coef;j++;
+                    printf("etudiant[numero_etu].controle_etu[i] = %s , coef = %d\n", etudiant[numero_etu].controle_etu[i], coef);
                 }
-               
-            }tab_moyenne[j].moyenne_elum = moyenne; j++;
+            }
+            tab_moyenne[j].moyenne_elum = moyenne;
+            
+
         }
+
         // system("rm tmp.txt");
     }
-
 }
 
-moyenne calcul_moyenne(moyenne_matiere tab_moyenne[]){
-    float moyenneGeneral=0;
-    float moyenneUE1=0;
-    float moyenneUE2=0;
-    float moyenneUE3=0;
+moyenne calcul_moyenne(moyenne_matiere tab_moyenne[])
+{
+    float moyenneGeneral = 0;
+    float moyenneUE1 = 0;
+    float moyenneUE2 = 0;
+    float moyenneUE3 = 0;
     moyenne resultat;
-    for(int i=0;i<NB_MATIERE;i++){
-        if(strstr(tab_moyenne[i].elum,"ELUMC5A")!=NULL){
-            moyenneUE1=moyenneUE1+tab_moyenne[i].moyenne_elum;
+    for (int i = 0; i < NB_MATIERE; i++)
+    {
+        if (strstr(tab_moyenne[i].elum, "ELUMC5A") != NULL)
+        {
+            moyenneUE1 = moyenneUE1 + tab_moyenne[i].moyenne_elum;
         }
-        if(strstr(tab_moyenne[i].elum,"ELUMC5B")!=NULL){
-            moyenneUE2=moyenneUE2+tab_moyenne[i].moyenne_elum;
+        if (strstr(tab_moyenne[i].elum, "ELUMC5B") != NULL)
+        {
+            moyenneUE2 = moyenneUE2 + tab_moyenne[i].moyenne_elum;
         }
-        if(strstr(tab_moyenne[i].elum,"ELUMC5C")!=NULL){
-            moyenneUE3=moyenneUE3+tab_moyenne[i].moyenne_elum;
+        if (strstr(tab_moyenne[i].elum, "ELUMC5C") != NULL)
+        {
+            moyenneUE3 = moyenneUE3 + tab_moyenne[i].moyenne_elum;
         }
     }
-    resultat.UE1=moyenneUE1;
-    resultat.UE2=moyenneUE2;
-    resultat.UE3=moyenneUE3;
-    resultat.General=moyenneUE1*0,3+moyenneUE2*0,3+moyenneUE3*0,4;
+    resultat.UE1 = moyenneUE1/4;
+    resultat.UE2 = moyenneUE2/4;
+    resultat.UE3 = moyenneUE3/4;
+    resultat.General = moyenneUE1 * 0, 3 + moyenneUE2 * 0, 3 + moyenneUE3 * 0, 4;
 }

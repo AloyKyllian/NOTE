@@ -1,2 +1,3 @@
 ELURO5C2 Surete_de_fonctionnement 
-UE 25
+CF 1
+UE 0.25
