@@ -157,17 +157,17 @@ etudiant_typ lire_tout_fichier()
         nb_matiere++;
     } while (fscanf(fichier, "%*s %*s %*s %*s %*s %*s %*s %*s %s", chemin_fichier) != EOF);
 
-    // printf("youss : \nID : %d \n",etudiant[2].ID_etu);
+    printf("youss : \nID : %d \n",etudiant[27].ID_etu);
 
     for(int i=0;i<nb_matiere;i++)
     {
-        printf("matiere : %s   controle : %s\nnote : %f\n",etudiant[2].nom_etu[i],etudiant[2].controle_etu[i],etudiant[2].note_etu[i]);
+        printf("matiere : %s   controle : %s\nnote : %f\n",etudiant[27].nom_etu[i],etudiant[27].controle_etu[i],etudiant[27].note_etu[i]);
     }
 
     fclose(fichier);
 
     free(matiere.eleve);
-    return etudiant[2];
+    return etudiant[28];
 }
 
 // void main (){
