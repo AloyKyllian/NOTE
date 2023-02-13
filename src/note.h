@@ -1,7 +1,11 @@
 #ifndef note_H_INCLUS    
 #define note_H_INCLUS   
 
-#define NB_MATIERE 14
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
+#define NB_MATIERE 17
 
 typedef char *String ;
 
@@ -35,7 +39,7 @@ typedef struct
 void virgule_vers_point(String note_lu);
 matiere_typ lire_fichier (char* chemin_fichier);
 void recup_chemin();
-etudiant_typ lire_tout_fichier();
+void lire_tout_fichier(etudiant_typ etudiant[]);
 
 
 

@@ -77,8 +77,7 @@ voulez calculer la note que vous devriez avoir ?
 [1] EPS
 [2] EGE
 
-UE1         NOTE    UE2         NOTE
-
+UE1             NOTE    UE2         NOTE
 MATHEMATIQUE    NOTE    nom_matiere NOTE
 SED             NOTE    nom_matiere NOTE
 nom_matiere NOTE    nom_matiere NOTE
