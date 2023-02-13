@@ -142,7 +142,7 @@ void lire_tout_fichier()
 
     for(int i=0;i<nb_matiere;i++)
     {
-        printf("matiere : %s   controle : %s\nnote : %f\n",etudiant[2].nom_etu[i],etudiant[2].controle_etu[i],etudiant[2].note_etu[i]);
+        printf("matiere : %3s   controle : %s\nnote : %f\n",etudiant[2].nom_etu[i],etudiant[2].controle_etu[i],etudiant[2].note_etu[i]);
     }
 
     fclose(fichier);
