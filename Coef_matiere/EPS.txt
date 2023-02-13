@@ -1,2 +1,3 @@
 ELUMC5A2
-UE 11
+CF 1
+UE 0.11
