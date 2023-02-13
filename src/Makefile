@@ -1,4 +1,4 @@
-note : note.o moyenne.o
+note : note.o moyenne.o affichage.o
 	gcc -fno-stack-protector -o note.out note.o 
 
 note.o : note.c note.h
@@ -6,6 +6,9 @@ note.o : note.c note.h
 
 moyenne.o : moyenne.c moyenne.h
 	gcc -o moyenne.c
+
+affichage.o : affichage.c 
+	gcc -o affichage.c
 
 clean : 
 	rm -rf *.o
