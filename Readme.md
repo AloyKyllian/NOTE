@@ -1,18 +1,15 @@
-
 mettre 10 dans les notes qu'on a pas
-
 
 quand une personne a validé une ue on lui demande sa moyenne de l'année derniere
 si elle n'a validé que certaines matiere dans une ue on lui demande les notes des matieres quelle a vazlidé
 Pour les dispense on distribu les 11% de sport en 3,7 dans deux et 3.6 dans une (d'apres yas donc pas sure!!!!!!!!!!)
 
-
-
 affichage souhaité
 
-            moy_gene       moy_EU1      moy_EU2     moy_EU3  
+            moy_gene       moy_EU1      moy_EU2     moy_EU3
+
 22212673 18.000000
-22213442 15.000000          validé          15          validé
+22213442 15.000000 validé 15 validé
 22208344 17.000000
 22006643 18.000000
 22111156 -1.000000
@@ -51,10 +48,37 @@ affichage souhaité
 
 c'est ton ID ?
 
-moy_gene       moy_EU1      moy_EU2     moy_EU3  
+moy_gene moy_EU1 moy_EU2 moy_EU3
 
 veux tu plus de detail ?
 
-EPS : XX EGE : XX 
+EPS : XX EGE : XX
 
 quelle matiere veux tu rentrer ?
+
+Voici le récapitulatif de vos notes du Semestre %d : 5 Moyenne EU1 : %f \n",moy_EU1); Moyenne EU2 : %f \n",moy_EU3); Moyenne EU3 : %f \n\n",moy_EU2 Moyenne Générale : %f", moy_gene);
+Voulez-vous plus de détails sur vos notes ? (Y/N) ou revenir à la sélection d'ID (R) ?
+
+chaque note non remplis = 10 en couleur specifique
+
+de quelle UE voulez vous voir en detail ou affiche tout d'un coup
+
+selectionner un controle specifique et changer sa note (recalculer les moyennes) les notes sont modifier dans le tableau de l'etudiant !!!!!!!!!! ATTENTION : ce controle doit etre un controle sans note
+
+option de réinitialisation (relire tout les fichiers)
+
+EPS 10
+SHS 9
+EGE 10
+
+moyUE 9
+
+voulez calculer la note que vous devriez avoir ?
+[1] EPS
+[2] EGE
+
+UE1             NOTE    UE2         NOTE
+MATHEMATIQUE    NOTE    nom_matiere NOTE
+SED             NOTE    nom_matiere NOTE
+nom_matiere NOTE    nom_matiere NOTE
+nom_matiere NOTE    nom_matiere NOTE

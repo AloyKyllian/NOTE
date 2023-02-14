@@ -1,6 +1,3 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
 #include "note.h"
 
 void virgule_vers_point(String note_lu)
@@ -48,28 +45,45 @@ matiere_typ lire_fichier(char *chemin_fichier)
     matiere.eleve[nb_eleve].note = atof(note_lu);
 
     for (nb_eleve = 1; strcmp(ID_lu, "MOYENNE") != 0; fscanf(fichier, "%s", ID_lu))
-
     {
         if (strlen(ID_lu) == 8)
         {
+            matiere.eleve[nb_eleve].ID = atoi(ID_lu);
             fscanf(fichier, "%s", note_lu);
-
+            if ( strcmp(note_lu, "DISPENSE") == 0)
+            {  
+                fflush(stdout);
+                matiere.eleve[nb_eleve].note = -2;
+            }
+            else{
+            if (strlen(note_lu) == 8)
+            {
+                matiere.eleve[nb_eleve].note = -1;
+                fseek(fichier,-8, SEEK_CUR);
+            }
+            else{
             virgule_vers_point(note_lu);
 
             matiere.eleve[nb_eleve].ID = atoi(ID_lu);
             matiere.eleve[nb_eleve].note = atof(note_lu);
 
-            if (strcmp(note_lu, "Validé") == 0 || strcmp(note_lu, "DISPENSE") == 0)
+            if (strcmp(note_lu, "Validé") == 0)
             {
                 fscanf(fichier, "%*s");
                 matiere.eleve[nb_eleve].note = -1;
             }
-
-            nb_eleve++;
+            }
+            
+        }
+        nb_eleve++;
         }
     }
-
     fclose(fichier); // fermeture du fichier
+
+    if(nb_eleve != 40)
+    {
+        printf("il y un pb avec la lecture de ceux fichier (il manque des eleve ! ) %d",nb_eleve);
+    }
 
     return (matiere);
 }
@@ -85,9 +99,8 @@ void recup_chemin()
     system(commande);
 }
 
-etudiant_typ lire_tout_fichier()
+void lire_tout_fichier(etudiant_typ etudiant[])
 {
-    etudiant_typ etudiant[40];
     recup_chemin();
     char chemin_fichier[100] = "fic_temp";
     char chemin_complet[100] = "";
@@ -142,32 +155,38 @@ etudiant_typ lire_tout_fichier()
         strcat(chemin_complet, chemin_fichier);
         matiere = lire_fichier(chemin_complet);
 
-        printf("nom matiere : %s", nom_matiere);
-        printf("   controle matiere : %s\n", controle);
+        /*printf("nom matiere : %s", nom_matiere);
+        printf("   controle matiere : %s\n", controle);*/
+
+        //printf("matiere : %s   controle : %s\n",nom_matiere,controle);
 
         for (int i = 0; i < 40; i++)
         {
-            strcpy(etudiant[i].nom_etu[nb_matiere], nom_matiere);
-            strcpy(etudiant[i].controle_etu[nb_matiere], controle);
-
 
             etudiant[i].ID_etu = matiere.eleve[i].ID;
             etudiant[i].note_etu[nb_matiere] = matiere.eleve[i].note;
+
+            strcpy(etudiant[i].nom_etu[nb_matiere], nom_matiere);
+            strcpy(etudiant[i].controle_etu[nb_matiere], controle);
+            //printf("ID : %d  note : %f\n",etudiant[i].ID_etu,etudiant[i].note_etu[nb_matiere]);
         }
         nb_matiere++;
     } while (fscanf(fichier, "%*s %*s %*s %*s %*s %*s %*s %*s %s", chemin_fichier) != EOF);
 
-    printf("youss : \nID : %d \n",etudiant[27].ID_etu);
+
+
+/*
+    printf("youss : \nID : %d \n",etudiant[28].ID_etu);
 
     for(int i=0;i<nb_matiere;i++)
     {
-        printf("matiere : %s   controle : %s\nnote : %f\n",etudiant[27].nom_etu[i],etudiant[27].controle_etu[i],etudiant[27].note_etu[i]);
+        printf("matiere : %s   controle : %s\nnote : %f\n",etudiant[28].nom_etu[i],etudiant[28].controle_etu[i],etudiant[28].note_etu[i]);
     }
-
+*/
     fclose(fichier);
 
     free(matiere.eleve);
-    return etudiant[28];
+    //return etudiant;
 }
 
 // void main (){
