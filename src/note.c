@@ -127,8 +127,14 @@ void lire_tout_fichier(etudiant_typ etudiant[])
 
     do
     {
+
+        strcpy(chemin_complet, "../semstre_5/");
+        strcat(chemin_complet, chemin_fichier);
+        matiere = lire_fichier(chemin_complet);
+
             strcpy(controle, "");
             strcpy(nom_matiere, &chemin_fichier[22]);
+            
             strcpy(&nom_matiere[8], Chaine);
             
 
@@ -156,12 +162,11 @@ void lire_tout_fichier(etudiant_typ etudiant[])
                 
             }
 
-        strcpy(chemin_complet, "../semstre_5/");
-        strcat(chemin_complet, chemin_fichier);
-        matiere = lire_fichier(chemin_complet);
 
-        /*printf("nom matiere : %s", nom_matiere);
-        printf("   controle matiere : %s\n", controle);*/
+
+   //printf("%s",nom_matiere);
+        //printf("nom matiere : %s", nom_matiere);
+        //printf("   controle matiere : %s\n", controle);
 
         //printf("matiere : %s   controle : %s\n",nom_matiere,controle);
 
@@ -180,14 +185,14 @@ void lire_tout_fichier(etudiant_typ etudiant[])
 
 
 
-/*
-    printf("youss : \nID : %d \n",etudiant[28].ID_etu);
 
-    for(int i=0;i<nb_matiere;i++)
-    {
-        printf("matiere : %s   controle : %s\nnote : %f\n",etudiant[28].nom_etu[i],etudiant[28].controle_etu[i],etudiant[28].note_etu[i]);
-    }
-*/
+    // printf("youss : \nID : %d \n",etudiant[28].ID_etu);
+
+    // for(int i=0;i<nb_matiere;i++)
+    // {
+    //     printf("matiere : %s   controle : %s\nnote : %f\n",etudiant[15].nom_etu[i],etudiant[15].controle_etu[i],etudiant[15].note_etu[i]);
+    // }
+
     fclose(fichier);
 
     free(matiere.eleve);

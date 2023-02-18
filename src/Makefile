@@ -1,17 +1,17 @@
 test : note.o moyenne.o tst.o affichage.o
-	gcc -fno-stack-protector -o test.out note.o moyenne.o tst.o affichage.o
+	gcc -o test.out note.o moyenne.o tst.o affichage.o
 
 note.o : note.c note.h
-	gcc -fno-stack-protector -c note.c
+	gcc -c note.c
 
 moyenne.o : moyenne.c moyenne.h
-	gcc -fno-stack-protector -c moyenne.c
+	gcc -c moyenne.c
 
 affichage.o : affichage.c affichage.h
-	gcc -fno-stack-protector -c affichage.c
+	gcc -c affichage.c
 
 tst.o : tst.c
-	gcc -fno-stack-protector -c tst.c
+	gcc -c tst.c
 
 
 clean : 
