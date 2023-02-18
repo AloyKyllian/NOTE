@@ -98,10 +98,15 @@ void recup_chemin()
 
     char commande[500];
 
-    strcpy(commande, "ls -ltu ");
-    strcat(commande, "../semstre_5");
-    strcat(commande, " | grep \".txt\" > fic_temp");
+    //strcpy(commande, "ls -ltu ");
+    //strcat(commande, "../semstre_5");
+    //strcat(commande, " | grep \".txt\" > fic_temp");
+    //system(commande);
+
+    //#ifdef WINDOWS
+    strcpy(commande, "dir /b ..\\semstre_5 > fic_temp");
     system(commande);
+    //#endif
 }
 
 void lire_tout_fichier(etudiant_typ etudiant[])
@@ -123,14 +128,28 @@ void lire_tout_fichier(etudiant_typ etudiant[])
         printf("erreur ouverture pdf");
     }
 
+    #ifdef LINUX
     fscanf(fichier, "%*s %*s %*s %*s %*s %*s %*s %*s %s", chemin_fichier);
+    #endif
+
+    #ifdef WINDOWS
+    fscanf(fichier, "%s",chemin_fichier);
+    #endif
+
 
     do
     {
 
+        #ifdef LINUX
         strcpy(chemin_complet, "../semstre_5/");
-        strcat(chemin_complet, chemin_fichier);
-        matiere = lire_fichier(chemin_complet);
+        #endif
+
+        #ifdef WINDOWS
+        strcpy(chemin_complet,"..\\semstre_5\\");
+        #endif
+
+            strcat(chemin_complet, chemin_fichier);
+            matiere = lire_fichier(chemin_complet);
 
             strcpy(controle, "");
             strcpy(nom_matiere, &chemin_fichier[22]);
@@ -181,9 +200,14 @@ void lire_tout_fichier(etudiant_typ etudiant[])
             //printf("ID : %d  note : %f\n",etudiant[i].ID_etu,etudiant[i].note_etu[nb_matiere]);
         }
         nb_matiere++;
-    } while (fscanf(fichier, "%*s %*s %*s %*s %*s %*s %*s %*s %s", chemin_fichier) != EOF);
-
-
+    } while (
+    #ifdef LINUX
+                fscanf(fichier, "%*s %*s %*s %*s %*s %*s %*s %*s %s", chemin_fichier) != EOF);
+    #endif
+    #ifdef WINDOWS
+        fscanf(fichier, "%s", chemin_fichier) != EOF);
+    #endif
+    
 
 
     // printf("youss : \nID : %d \n",etudiant[28].ID_etu);

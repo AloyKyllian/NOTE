@@ -50,7 +50,7 @@ void affichage(int numeroSemestre, etudiant_typ etudiant[])
         break;
 
     case 1:
-
+        if(1){};
         // TRIE DES NOTES ^^
 
         char commande[100];
@@ -59,7 +59,7 @@ void affichage(int numeroSemestre, etudiant_typ etudiant[])
         fichier = fopen("note.txt", "w"); // ouvre le fichier ne mode read
         if (fichier == NULL)
         {
-            printf("erreur ouverture pdf");
+            printf("erreur ouverture");
         }
         for (int i = 0; i < NB_CONTROLE; i++)
         {
