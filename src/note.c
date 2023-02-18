@@ -1,3 +1,8 @@
+/**
+ * Fait par Kyllian Aloy
+ * 
+ * Le 18/02/2023
+*/
 #include "note.h"
 
 void virgule_vers_point(String note_lu)

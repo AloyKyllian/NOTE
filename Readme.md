@@ -1,3 +1,27 @@
+### Presentation
+
+Ce projet a but educatif permet de consulter ses notes semestrielle sans aller chercher tout les fichier un par.
+Il permet aussi de calculer les moyenne des matieres, des UE et generale.
+
+## futur amelioration
+
+Pouvoir changé les notes qui ne nous ont pas encore été donné, afin de recalculer la moyenne.
+pouvoir calculer la note a avoir afin d'obtenir son UE (par exempl vous avez eu 15 au premier controle de SHS quelle note vous devrier avoir pour au moins avoir 10 pour l'EU1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+## note du projet
+
 mettre 10 dans les notes qu'on a pas
 
 quand une personne a validé une ue on lui demande sa moyenne de l'année derniere

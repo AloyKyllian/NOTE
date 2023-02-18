@@ -1,6 +1,9 @@
-#include <stdlib.h>
-#include <stdio.h>_coef
-#include <string.h>
+/**
+ * Fait par Youssera Achachera et Kyllian Aloy
+ * 
+ * Le 18/02/2023
+*/
+
 #include "moyenne.h"
 
 void lecture_coef(char chemin_dossier_coef[], coef_note_typ *tab_note_coef, coef_matiere_typ *tab_mat_coef)

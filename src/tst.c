@@ -1,8 +1,8 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include "moyenne.h"
-#include "note.h"
+/**
+ * Fait par Hugo Lestrade et Kyllian Aloy
+ * 
+ * Le 18/02/2023
+*/
 #include "affichage.h"
 
 int main()
@@ -11,8 +11,6 @@ int main()
     etudiant_typ *test;
     //moyenne resultat;
     int identifiant;
-    char chemin_dossier_coef[100] = "../Coef_matiere";
-    system("chmod 777 ../Coef_matiere");
     //moyenne_matiere tab_moyenne[100];
     // printf("\nEntrer votre identifiant\n");
     // scanf("%d", &identifiant);

@@ -1,7 +1,9 @@
-
+/**
+ * Fait par Hugo Lestrade et Kyllian Aloy
+ * 
+ * Le 18/02/2023
+*/
 #include "affichage.h"
-#include "note.h"
-#include "moyenne.h"
 
 void affichage(int numeroSemestre, etudiant_typ etudiant[])
 {

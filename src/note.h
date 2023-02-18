@@ -1,3 +1,8 @@
+/**
+ * Fait par Kyllian Aloy
+ * 
+ * Le 18/02/2023
+*/
 #ifndef note_H_INCLUS    
 #define note_H_INCLUS   
 

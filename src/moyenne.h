@@ -1,3 +1,8 @@
+/**
+ * Fait par Youssera Achachera et Kyllian Aloy
+ * 
+ * Le 18/02/2023
+*/
 #ifndef moyenne_H_INCLUS    
 #define moyenne_H_INCLUS   
 

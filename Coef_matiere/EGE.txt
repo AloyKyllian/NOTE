@@ -1,3 +1,0 @@
-ELUMC5A4
-CF 1
-UE 0.33

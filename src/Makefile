@@ -1,5 +1,5 @@
 test : note.o moyenne.o tst.o affichage.o
-	gcc -fno-stack-protector -o test.exe note.o moyenne.o tst.o affichage.o
+	gcc -fno-stack-protector -o test.out note.o moyenne.o tst.o affichage.o
 
 note.o : note.c note.h
 	gcc -fno-stack-protector -c note.c
