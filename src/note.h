@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#define NB_CONTROLE 17
+#define NB_CONTROLE 20
 
 #define NB_CONTROLE_TOT 23
 
@@ -20,6 +20,8 @@ typedef struct
 typedef char controle_typ[9];
 
 typedef char nom_typ[20];
+
+typedef char nom_matiere[20];
 
 typedef struct
 {
