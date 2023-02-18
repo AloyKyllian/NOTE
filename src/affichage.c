@@ -58,7 +58,7 @@ void affichage(int numeroSemestre, etudiant_typ etudiant[])
         {
             printf("erreur ouverture pdf");
         }
-        for (int i = 0; i < NB_MATIERE; i++)
+        for (int i = 0; i < NB_CONTROLE; i++)
         {
             fprintf(fichier, "%8s %3s %f\n", etudiant[indice_etu].nom_etu[i], etudiant[indice_etu].controle_etu[i], etudiant[indice_etu].note_etu[i]);
         }
@@ -73,7 +73,7 @@ void affichage(int numeroSemestre, etudiant_typ etudiant[])
         {
             printf("erreur ouverture pdf");
         }
-        for (int i = 0; i < NB_MATIERE; i++)
+        for (int i = 0; i < NB_CONTROLE; i++)
         {
             fscanf(fichier, "%8s %3s %f\n", etudiant[indice_etu].nom_etu[i], etudiant[indice_etu].controle_etu[i], &etudiant[indice_etu].note_etu[i]);
         }
@@ -83,7 +83,7 @@ void affichage(int numeroSemestre, etudiant_typ etudiant[])
 
         printf("ID : %d \n", etudiant[indice_etu].ID_etu);
 
-        for (int i = 0; i < NB_MATIERE; i++)
+        for (int i = 0; i < NB_CONTROLE; i++)
         {
             printf("matiere : %s   controle : %3s   note : %f\n", etudiant[indice_etu].nom_etu[i], etudiant[indice_etu].controle_etu[i], etudiant[indice_etu].note_etu[i]);
         }
