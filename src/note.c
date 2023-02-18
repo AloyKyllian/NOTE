@@ -98,15 +98,17 @@ void recup_chemin()
 
     char commande[500];
 
-    //strcpy(commande, "ls -ltu ");
-    //strcat(commande, "../semstre_5");
-    //strcat(commande, " | grep \".txt\" > fic_temp");
-    //system(commande);
+    #ifdef LINUX
+    strcpy(commande, "ls -ltu ");
+    strcat(commande, "../semstre_5");
+    strcat(commande, " | grep \".txt\" > fic_temp");
+    system(commande);
+    #endif
 
-    //#ifdef WINDOWS
+    #ifdef WINDOWS
     strcpy(commande, "dir /b ..\\semstre_5 > fic_temp");
     system(commande);
-    //#endif
+    #endif
 }
 
 void lire_tout_fichier(etudiant_typ etudiant[])
@@ -139,7 +141,6 @@ void lire_tout_fichier(etudiant_typ etudiant[])
 
     do
     {
-
         #ifdef LINUX
         strcpy(chemin_complet, "../semstre_5/");
         #endif

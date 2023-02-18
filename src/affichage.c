@@ -118,6 +118,12 @@ void affichage(int numeroSemestre, etudiant_typ etudiant[])
         else if (choix == 'N' || choix == 'n')
         {
             printf("Vous quittez le programme\n");
+            #ifdef WINDOWS
+            system("del fic_temp");
+            system("del note.txt");
+            system("del note_sort.txt");
+            system("del sort.txt");
+            #endif
             exit(1);
         }
         break;
