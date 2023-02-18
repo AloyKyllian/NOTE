@@ -25,6 +25,7 @@ void affichage(int numeroSemestre, etudiant_typ etudiant[])
 
         for (int i = 0; i < 40; i++)
         {
+            //printf("%d %d", etudiant[i].ID_etu, id);
             if (etudiant[i].ID_etu == id)
             {
                 indice_etu = i;
@@ -48,7 +49,7 @@ void affichage(int numeroSemestre, etudiant_typ etudiant[])
 
     case 1:
 
-        //TRIE DES NOTES ^^
+        // TRIE DES NOTES ^^
 
         char commande[100];
         FILE *fichier = NULL; // pointeur de fichier pour utiliser les fonction associé
@@ -58,7 +59,7 @@ void affichage(int numeroSemestre, etudiant_typ etudiant[])
         {
             printf("erreur ouverture pdf");
         }
-        for (int i = 0; i < NB_MATIERE; i++)
+        for (int i = 0; i < NB_CONTROLE; i++)
         {
             fprintf(fichier, "%8s %3s %f\n", etudiant[indice_etu].nom_etu[i], etudiant[indice_etu].controle_etu[i], etudiant[indice_etu].note_etu[i]);
         }
@@ -67,35 +68,36 @@ void affichage(int numeroSemestre, etudiant_typ etudiant[])
         strcpy(commande, "sort note.txt > note_sort.txt");
         system(commande);
 
-
         fichier = fopen("note_sort.txt", "r"); // ouvre le fichier ne mode read
         if (fichier == NULL)
         {
             printf("erreur ouverture pdf");
         }
-        for (int i = 0; i < NB_MATIERE; i++)
+        for (int i = 0; i < NB_CONTROLE; i++)
         {
             fscanf(fichier, "%8s %3s %f\n", etudiant[indice_etu].nom_etu[i], etudiant[indice_etu].controle_etu[i], &etudiant[indice_etu].note_etu[i]);
         }
         fclose(fichier);
 
-        //AFFICHAGE DES NOTES
+        // AFFICHAGE DES NOTES
 
-        printf("ID : %d \n", etudiant[indice_etu].ID_etu);
+        printf("\nID : %d \n", etudiant[indice_etu].ID_etu);
 
-        for (int i = 0; i < NB_MATIERE; i++)
+        for (int i = 0; i < NB_CONTROLE; i++)
         {
             printf("matiere : %s   controle : %3s   note : %f\n", etudiant[indice_etu].nom_etu[i], etudiant[indice_etu].controle_etu[i], etudiant[indice_etu].note_etu[i]);
         }
 
-        // appel des fonctions pour récup les moyennes
+        Calcul_note_coef(etudiant);
+        /*
+            // appel des fonctions pour récup les moyennes
 
-        printf("Voici le récapitulatif de vos notes du Semestre %d : \n\n", numeroSemestre);
-        printf("\t Moyenne EU1 : %f \n", moy_EU1);
-        printf("\t Moyenne EU2 : %f \n", moy_EU3);
-        printf("\t Moyenne EU3 : %f \n\n", moy_EU2);
-        printf("\t Moyenne Générale : %f\n", moy_gene);
-        printf("Voulez-vous plus de détails sur vos notes ? (Y/N) ou revenir à la sélection d'ID (R) ? \n");
+            printf("Voici le récapitulatif de vos notes du Semestre %d : \n\n", numeroSemestre);
+            printf("\t Moyenne EU1 : %f \n", moy_EU1);
+            printf("\t Moyenne EU2 : %f \n", moy_EU3);
+            printf("\t Moyenne EU3 : %f \n\n", moy_EU2);
+            printf("\t Moyenne Générale : %f\n", moy_gene);
+            printf("Voulez-vous plus de détails sur vos notes ? (Y/N) ou revenir à la sélection d'ID (R) ? \n");*/
         scanf("%s", &choix);
         if (choix != 'Y' && choix != 'y' && choix != 'N' && choix != 'n' && choix != 'R' && choix != 'r')
         {

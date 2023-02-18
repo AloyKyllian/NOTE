@@ -5,7 +5,9 @@
 #include <stdio.h>
 #include <string.h>
 
-#define NB_MATIERE 17
+#define NB_CONTROLE 20
+
+#define NB_CONTROLE_TOT 23
 
 typedef char *String ;
 
@@ -19,12 +21,14 @@ typedef char controle_typ[9];
 
 typedef char nom_typ[20];
 
+typedef char nom_matiere[20];
+
 typedef struct
 {
     int ID_etu;
-    float note_etu[NB_MATIERE];
-    controle_typ controle_etu[NB_MATIERE];
-    nom_typ nom_etu[NB_MATIERE];
+    float note_etu[NB_CONTROLE_TOT];
+    controle_typ controle_etu[NB_CONTROLE_TOT];
+    nom_typ nom_etu[NB_CONTROLE_TOT];
 }etudiant_typ;
 
 typedef struct
