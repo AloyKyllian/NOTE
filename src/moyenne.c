@@ -1,8 +1,8 @@
 /**
  * Fait par Youssera Achachera et Kyllian Aloy
- * 
+ *
  * Le 18/02/2023
-*/
+ */
 
 #include "moyenne.h"
 
@@ -197,6 +197,21 @@ void Calcul_note_coef(etudiant_typ etudiant[])
 
     lecture_note(&etu, "sort.txt");
 
+    fichier = fopen("coef.txt", "w"); // ouvre le fichier ne mode read
+    if (fichier == NULL)
+    {
+        printf("erreur ouverture pdf");
+    }
+    for (int i = 0; i < NB_CONTROLE_TOT; i++)
+    {
+        fprintf(fichier, "%8s %4s %3s %f\n", tab_note_coef.elum[i], tab_note_coef.nom[i], tab_note_coef.controle[i], tab_note_coef.coef_cc[i]);
+    }
+    fclose(fichier);
+
+    system("sort coef.txt > sort_coef.txt");
+
+    lecture_coef2(&tab_note_coef, "sort_coef.txt");
+
     // printf("\nTOUTES LES NOTES  \n");
 
     // for (int j = 0; j < NB_CONTROLE_TOT; j++)
@@ -267,14 +282,13 @@ void Calcul_note_coef(etudiant_typ etudiant[])
     //     printf("%s %s  %.2f \n", tab_mat_coef.elum[j], tab_mat_coef.nom[j], tab_mat_coef.coef[j]);
     // }
 
-
-    moyenne.UE1=0;
-    moyenne.UE2=0;
-    moyenne.UE3=0;
-    moyenne.gene=0;
+    moyenne.UE1 = 0;
+    moyenne.UE2 = 0;
+    moyenne.UE3 = 0;
+    moyenne.gene = 0;
     for (int i = 0; i < 4; i++)
     {
-        //printf("%f",moyenne.UE1);
+        // printf("%f",moyenne.UE1);
         moyenne.UE1 += matiere.note_etu[i] * tab_mat_coef.coef[i];
     }
 
