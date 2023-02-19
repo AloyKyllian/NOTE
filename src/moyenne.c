@@ -1,8 +1,8 @@
 /**
  * Fait par Youssera Achachera et Kyllian Aloy
- * 
+ *
  * Le 18/02/2023
-*/
+ */
 
 #include "moyenne.h"
 
@@ -106,6 +106,25 @@ void lecture_note2(note_typ *note, char nom_fichier[])
     // }
 }
 
+void lecture_coef2(coef_note_typ *tab_note_coef, char nom_fichier[])
+{
+
+    FILE *fichier;
+    int i = 0;
+
+    fichier = fopen(nom_fichier, "r");
+    while (fscanf(fichier, "%s %s %s %f", &tab_note_coef->elum[i], &tab_note_coef->nom[i], &tab_note_coef->controle[i], &tab_note_coef->coef_cc[i]) != EOF)
+    {
+        i++;
+    }
+    fclose(fichier);
+
+    // for(int j=0;j<i;j++)
+    // {
+    //     printf(" %s %s %f\n", etu->nom_etu[j], etu->controle_etu[j],etu->note_etu[j]);
+    // }
+}
+
 void Calcul_note_coef(etudiant_typ etudiant[])
 {
     FILE *fichier = NULL; // pointeur de fichier pour utiliser les fonction associé
@@ -197,6 +216,21 @@ void Calcul_note_coef(etudiant_typ etudiant[])
 
     lecture_note(&etu, "sort.txt");
 
+    fichier = fopen("coef.txt", "w"); // ouvre le fichier ne mode read
+    if (fichier == NULL)
+    {
+        printf("erreur ouverture pdf");
+    }
+    for (int i = 0; i < NB_CONTROLE_TOT; i++)
+    {
+        fprintf(fichier, "%8s %4s %3s %f\n", tab_note_coef.elum[i], tab_note_coef.nom[i], tab_note_coef.controle[i], tab_note_coef.coef_cc[i]);
+    }
+    fclose(fichier);
+
+    system("sort coef.txt > sort_coef.txt");
+
+    lecture_coef2(&tab_note_coef, "sort_coef.txt");
+
     // printf("\nTOUTES LES NOTES  \n");
 
     // for (int j = 0; j < NB_CONTROLE_TOT; j++)
@@ -267,14 +301,13 @@ void Calcul_note_coef(etudiant_typ etudiant[])
     //     printf("%s %s  %.2f \n", tab_mat_coef.elum[j], tab_mat_coef.nom[j], tab_mat_coef.coef[j]);
     // }
 
-
-    moyenne.UE1=0;
-    moyenne.UE2=0;
-    moyenne.UE3=0;
-    moyenne.gene=0;
+    moyenne.UE1 = 0;
+    moyenne.UE2 = 0;
+    moyenne.UE3 = 0;
+    moyenne.gene = 0;
     for (int i = 0; i < 4; i++)
     {
-        //printf("%f",moyenne.UE1);
+        // printf("%f",moyenne.UE1);
         moyenne.UE1 += matiere.note_etu[i] * tab_mat_coef.coef[i];
     }
 
