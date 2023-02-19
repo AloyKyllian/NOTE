@@ -106,6 +106,25 @@ void lecture_note2(note_typ *note, char nom_fichier[])
     // }
 }
 
+void lecture_coef2(coef_note_typ *tab_note_coef, char nom_fichier[])
+{
+
+    FILE *fichier;
+    int i = 0;
+
+    fichier = fopen(nom_fichier, "r");
+    while (fscanf(fichier, "%s %s %s %f", &tab_note_coef->elum[i], &tab_note_coef->nom[i], &tab_note_coef->controle[i], &tab_note_coef->coef_cc[i]) != EOF)
+    {
+        i++;
+    }
+    fclose(fichier);
+
+    // for(int j=0;j<i;j++)
+    // {
+    //     printf(" %s %s %f\n", etu->nom_etu[j], etu->controle_etu[j],etu->note_etu[j]);
+    // }
+}
+
 void Calcul_note_coef(etudiant_typ etudiant[])
 {
     FILE *fichier = NULL; // pointeur de fichier pour utiliser les fonction associé
