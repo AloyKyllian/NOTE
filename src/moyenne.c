@@ -231,19 +231,19 @@ void Calcul_note_coef(etudiant_typ etudiant[])
 
     lecture_coef2(&tab_note_coef, "sort_coef.txt");
 
-    // printf("\nTOUTES LES NOTES  \n");
+    printf("\nTOUTES LES NOTES  \n");
 
-    // for (int j = 0; j < NB_CONTROLE_TOT; j++)
-    // {
-    //     printf("%s %s %f\n", etu.nom_etu[j], etu.controle_etu[j], etu.note_etu[j]);
-    // }
+    for (int j = 0; j < NB_CONTROLE_TOT; j++)
+    {
+        printf("%s %s %f\n", etu.nom_etu[j], etu.controle_etu[j], etu.note_etu[j]);
+    }
 
-    // printf("\nCOEFFICIENT  \n");
+    printf("\nCOEFFICIENT  \n");
 
-    // for (int j = 0; j < NB_CONTROLE_TOT; j++)
-    // {
-    //     printf("%s %s %f\n", tab_note_coef.elum[j], tab_note_coef.controle[j], tab_note_coef.coef_cc[j]);
-    // }
+    for (int j = 0; j < NB_CONTROLE_TOT; j++)
+    {
+        printf("%s %s %f\n", tab_note_coef.elum[j], tab_note_coef.controle[j], tab_note_coef.coef_cc[j]);
+    }
 
     for (int j = 0; j < NB_CONTROLE_TOT; j++)
     {
