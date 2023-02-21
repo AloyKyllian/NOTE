@@ -1,8 +1,8 @@
 /**
  * Fait par Hugo Lestrade et Kyllian Aloy
- * 
+ *
  * Le 18/02/2023
-*/
+ */
 #include "affichage.h"
 
 void affichage(int numeroSemestre, etudiant_typ etudiant[])
@@ -27,7 +27,7 @@ void affichage(int numeroSemestre, etudiant_typ etudiant[])
 
         for (int i = 0; i < 40; i++)
         {
-            //printf("%d %d", etudiant[i].ID_etu, id);
+            // printf("%d %d", etudiant[i].ID_etu, id);
             if (etudiant[i].ID_etu == id)
             {
                 indice_etu = i;
@@ -50,7 +50,9 @@ void affichage(int numeroSemestre, etudiant_typ etudiant[])
         break;
 
     case 1:
-        if(1){};
+        if (1)
+        {
+        };
         // TRIE DES NOTES ^^
 
         char commande[100];
@@ -83,7 +85,7 @@ void affichage(int numeroSemestre, etudiant_typ etudiant[])
 
         // AFFICHAGE DES NOTES
 
-        printf("\nID : %d \n", etudiant[indice_etu].ID_etu);
+        printf("\nID : %d \nVOICI TOUTE LES NOTES \n", etudiant[indice_etu].ID_etu);
 
         for (int i = 0; i < NB_CONTROLE; i++)
         {
@@ -118,12 +120,12 @@ void affichage(int numeroSemestre, etudiant_typ etudiant[])
         else if (choix == 'N' || choix == 'n')
         {
             printf("Vous quittez le programme\n");
-            #ifdef WINDOWS
+#ifdef WINDOWS
             system("del fic_temp");
             system("del note.txt");
             system("del note_sort.txt");
             system("del sort.txt");
-            #endif
+#endif
             exit(1);
         }
         break;

@@ -11,11 +11,11 @@ int main()
   etudiant_typ *test;
   // moyenne resultat;
   int identifiant;
-  printf("Hello World");
-  // moyenne_matiere tab_moyenne[100];
-  //  printf("\nEntrer votre identifiant\n");
-  //  scanf("%d", &identifiant);
-  //  fonction pour trouver le numero etudiant a partir de l'identifiant
+  // printf("Hello World");
+  //  moyenne_matiere tab_moyenne[100];
+  //   printf("\nEntrer votre identifiant\n");
+  //   scanf("%d", &identifiant);
+  //   fonction pour trouver le numero etudiant a partir de l'identifiant
 
   // recuperation des notes
   lire_tout_fichier(etudiant);
@@ -37,7 +37,7 @@ int main()
     */
   while (1)
   {
-    printf("Hello World");
+    // printf("Hello World");
     affichage(5, etudiant);
   }
 }
