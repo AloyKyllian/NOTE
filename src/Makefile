@@ -14,10 +14,10 @@ tst.o : tst.c
 	gcc -c tst.c -DLINUX
 
 test_W: note.c moyenne.c tst.c affichage.c affichage.h moyenne.h note.h
-	gcc -c note.c -DWINDOWS
-	gcc -c moyenne.c -DWINDOWS
-	gcc -c tst.c -DWINDOWS
-	gcc -c affichage.c -DWINDOWS
-	gcc -o test.exe note.o moyenne.o tst.o affichage.o -DWINDOWS
+gcc -c note.c -DWINDOWS
+gcc -c moyenne.c -DWINDOWS
+gcc -c tst.c -DWINDOWS
+gcc -c affichage.c -DWINDOWS
+gcc -o test.exe note.o moyenne.o tst.o affichage.o -DWINDOWS
 clean : 
 	rm -rf *.o

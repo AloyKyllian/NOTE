@@ -193,7 +193,7 @@ void lire_tout_fichier(etudiant_typ etudiant[])
 
             strcpy(etudiant[i].nom_etu[nb_matiere], nom_matiere);
             strcpy(etudiant[i].controle_etu[nb_matiere], controle);
-            // printf("ID : %d  note : %f\n",etudiant[i].ID_etu,etudiant[i].note_etu[nb_matiere]);
+            // printf("ID : %d  note : %f\n", etudiant[i].ID_etu, etudiant[i].note_etu[nb_matiere]);
         }
         nb_matiere++;
     } while (
